@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.session11_newsapp.API.Model.Category_Data
 import com.example.session11_newsapp.R
 import com.google.android.material.card.MaterialCardView
 
@@ -17,8 +16,6 @@ class Category_Adapter (val categoryList: List<Category_Data>): RecyclerView.Ada
         val title : TextView = itemView.findViewById(R.id.title_card)
         val img : ImageView = itemView.findViewById(R.id.img_card)
         val materialCard : MaterialCardView = itemView.findViewById(R.id.material_card)
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,14 +26,14 @@ class Category_Adapter (val categoryList: List<Category_Data>): RecyclerView.Ada
             )
         return ViewHolder(view)
     }
+
+
     val leftSide = 10
     val rightSide = 20
 
     override fun getItemViewType(position: Int): Int {
-        if (position%2==0)
-            return leftSide
-        else
-            return rightSide
+        if (position%2==0) return leftSide
+        else return rightSide
     }
 
     override fun getItemCount(): Int {
@@ -49,6 +46,18 @@ class Category_Adapter (val categoryList: List<Category_Data>): RecyclerView.Ada
         holder.img.setImageResource(item.imageResourceID)
         holder.materialCard.
         setCardBackgroundColor(ContextCompat
-            .getColor(holder.itemView.context, item.bg_color))
+            .getColor(holder.itemView.context, item.bg_color)
+        )
+        onItemClickListener?.let {
+            holder.itemView.setOnClickListener {
+                onItemClickListener?.onItemClick(position,item)
+
+            }
+        }
     }
+     interface OnItemClickListener{
+         fun onItemClick(pos:Int,category:Category_Data)
+     }
+    var onItemClickListener:OnItemClickListener?=null
+
 }

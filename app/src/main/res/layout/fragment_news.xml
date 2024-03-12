@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home_Activity"
-    android:background="@drawable/main_background"
+    android:layout_marginTop="60dp"
     >
 
     <com.google.android.material.tabs.TabLayout
@@ -15,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="20dp"
         app:tabTextColor="@color/red"
         app:tabSelectedTextColor="@color/white"
         app:tabBackground="@drawable/tab_background"

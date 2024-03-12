@@ -1,4 +1,4 @@
-package com.example.session11_newsapp.API.Model
+package com.example.session11_newsapp.User_Interface.Category
 
 data class Category_Data(
     val id:String,

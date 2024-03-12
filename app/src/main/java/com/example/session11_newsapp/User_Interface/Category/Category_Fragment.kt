@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.session11_newsapp.API.Model.Category_Data
 import com.example.session11_newsapp.R
 
 class Category_Fragment : Fragment(){
@@ -27,7 +26,7 @@ class Category_Fragment : Fragment(){
         Category_Data("general","General",R.drawable.ic_environment,R.color.blue_light),
         Category_Data("science","Science",R.drawable.ic_science,R.color.yellow)
     )
-    val category_Adapter =  Category_Adapter(categoryList)
+    var category_Adapter =  Category_Adapter(categoryList)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,6 +36,20 @@ class Category_Fragment : Fragment(){
 
     private fun init_View() {
         recyclerView = requireView().findViewById(R.id.recycler_view_category)
+
+        category_Adapter.onItemClickListener = object : Category_Adapter.OnItemClickListener{
+            override fun onItemClick(pos: Int, category: Category_Data) {
+                //push News_Fragment
+                onCategoryClickListener?.onCategoryClick(pos,category)
+            }
+
+        }
+
         recyclerView.adapter= category_Adapter
+    }
+
+    var onCategoryClickListener:OnCategoryClickListener?=null
+    interface OnCategoryClickListener{
+        fun onCategoryClick(pos: Int, category: Category_Data)
     }
 }
