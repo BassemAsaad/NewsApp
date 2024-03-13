@@ -1,4 +1,4 @@
-package com.example.session11_newsapp.User_Interface
+package com.example.session11_newsapp.User_Interface.News
 
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +10,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.session11_newsapp.API.API_Manager
-import com.example.session11_newsapp.Adapters.News_Adapter
 import com.example.session11_newsapp.API.Model.NewsResponse
 import com.example.session11_newsapp.API.Model.SourceResponse
 import com.example.session11_newsapp.API.Model.SourcesItem
@@ -27,7 +26,7 @@ class News_Fragment(val category:Category_Data) : Fragment() {
     lateinit var tabLayout:TabLayout
     lateinit var recyclerView: RecyclerView
     lateinit var progressBar: ProgressBar
-    val adapterNews =News_Adapter(null)
+    val adapterNews = News_Adapter(null)
 
 
     override fun onCreateView(

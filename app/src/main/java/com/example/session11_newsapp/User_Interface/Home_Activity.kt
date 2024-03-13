@@ -7,11 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.session11_newsapp.R
+import com.example.session11_newsapp.User_Interface.News.News_Fragment
 import com.example.session11_newsapp.User_Interface.Category.Category_Data
 import com.example.session11_newsapp.User_Interface.Category.Category_Fragment
 import com.example.session11_newsapp.User_Interface.Settings.Settings_Fragment
 
-class Start_Activity : AppCompatActivity(){
+class Home_Activity : AppCompatActivity(){
     private lateinit var ic_menu : ImageView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var category: TextView
@@ -22,7 +23,7 @@ class Start_Activity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_start)
+        setContentView(R.layout.activity_home)
         init_view()
     }
 

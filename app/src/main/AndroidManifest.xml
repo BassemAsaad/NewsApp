@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Session11_NewsApp"
         tools:targetApi="31">
         <activity
-            android:name=".User_Interface.Start_Activity"
+            android:name=".User_Interface.Home_Activity"
             android:exported="true"
             android:theme="@style/Theme.Session11_NewsApp.NoActionBar">
             <intent-filter>
@@ -25,7 +25,7 @@
         </activity>
 
         <activity
-            android:name=".User_Interface.News_Fragment"
+            android:name=".User_Interface.News.News_Fragment"
             android:exported="true">
 
         </activity>
