@@ -1,4 +1,4 @@
-package com.example.session11_newsapp.User_Interface.Settings
+package com.example.session11_newsapp.user_interface.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater

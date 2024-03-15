@@ -1,4 +1,4 @@
-package com.example.session11_newsapp.API.Model
+package com.example.session11_newsapp.api.Model
 
 import com.google.gson.annotations.SerializedName
 

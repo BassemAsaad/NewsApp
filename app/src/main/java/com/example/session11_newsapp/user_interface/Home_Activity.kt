@@ -1,4 +1,4 @@
-package com.example.session11_newsapp.User_Interface
+package com.example.session11_newsapp.user_interface
 
 import android.os.Bundle
 import android.widget.ImageView
@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.session11_newsapp.R
-import com.example.session11_newsapp.User_Interface.News.News_Fragment
-import com.example.session11_newsapp.User_Interface.Category.Category_Data
-import com.example.session11_newsapp.User_Interface.Category.Category_Fragment
-import com.example.session11_newsapp.User_Interface.Settings.Settings_Fragment
+import com.example.session11_newsapp.user_interface.news.News_Fragment
+import com.example.session11_newsapp.user_interface.category.Category_Data
+import com.example.session11_newsapp.user_interface.category.Category_Fragment
+import com.example.session11_newsapp.user_interface.settings.Settings_Fragment
 
 class Home_Activity : AppCompatActivity(){
     private lateinit var ic_menu : ImageView

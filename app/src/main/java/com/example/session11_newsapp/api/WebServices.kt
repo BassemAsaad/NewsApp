@@ -1,7 +1,7 @@
-package com.example.session11_newsapp.API
+package com.example.session11_newsapp.api
 
-import com.example.session11_newsapp.API.Model.NewsResponse
-import com.example.session11_newsapp.API.Model.SourceResponse
+import com.example.session11_newsapp.api.Model.NewsResponse
+import com.example.session11_newsapp.api.Model.SourceResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

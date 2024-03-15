@@ -1,4 +1,4 @@
-package com.example.session11_newsapp.User_Interface.News
+package com.example.session11_newsapp.user_interface.news
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.session11_newsapp.API.Model.ArticlesItem
+import com.example.session11_newsapp.api.Model.ArticlesItem
 import com.example.session11_newsapp.R
 
 class News_Adapter(var listItems: List<ArticlesItem?>?) : RecyclerView.Adapter<News_Adapter.ViewHolder>() {
