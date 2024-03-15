@@ -18,13 +18,13 @@ class Category_Fragment : Fragment(){
     }
 
     lateinit var recyclerView: RecyclerView
-    val categoryList = listOf<Category_Data>(
-        Category_Data("sports","Sports",R.drawable.ic_sports,R.color.red_light),
-        Category_Data("technology","Technology",R.drawable.ic_politics,R.color.blue),
-        Category_Data("health","Health",R.drawable.ic_health,R.color.pink),
-        Category_Data("business","Business",R.drawable.ic_bussines,R.color.brown),
-        Category_Data("general","General",R.drawable.ic_environment,R.color.blue_light),
-        Category_Data("science","Science",R.drawable.ic_science,R.color.yellow)
+    val categoryList = listOf<CategoryModel>(
+        CategoryModel("sports","Sports",R.drawable.ic_sports,R.color.red_light),
+        CategoryModel("technology","Technology",R.drawable.ic_politics,R.color.blue),
+        CategoryModel("health","Health",R.drawable.ic_health,R.color.pink),
+        CategoryModel("business","Business",R.drawable.ic_bussines,R.color.brown),
+        CategoryModel("general","General",R.drawable.ic_environment,R.color.blue_light),
+        CategoryModel("science","Science",R.drawable.ic_science,R.color.yellow)
     )
     var category_Adapter =  Category_Adapter(categoryList)
 
@@ -38,7 +38,7 @@ class Category_Fragment : Fragment(){
         recyclerView = requireView().findViewById(R.id.recycler_view_category)
 
         category_Adapter.onItemClickListener = object : Category_Adapter.OnItemClickListener{
-            override fun onItemClick(pos: Int, category: Category_Data) {
+            override fun onItemClick(pos: Int, category: CategoryModel) {
                 //push News_Fragment
                 onCategoryClickListener?.onCategoryClick(pos,category)
             }
@@ -50,6 +50,6 @@ class Category_Fragment : Fragment(){
 
     var onCategoryClickListener:OnCategoryClickListener?=null
     interface OnCategoryClickListener{
-        fun onCategoryClick(pos: Int, category: Category_Data)
+        fun onCategoryClick(pos: Int, category: CategoryModel)
     }
 }

@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="60dp">
 
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tap_layout"
             android:layout_width="match_parent"
@@ -25,6 +26,7 @@
             app:tabBackground="@drawable/tab_background"
             app:tabMode="scrollable"
             app:tabIndicatorHeight="0dp"
+            tools:contentDescription="Tags"
 
             />
 

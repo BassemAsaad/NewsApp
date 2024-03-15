@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.session11_newsapp.R
 import com.google.android.material.card.MaterialCardView
 
-class Category_Adapter (val categoryList: List<Category_Data>): RecyclerView.Adapter<Category_Adapter.ViewHolder>() {
+class Category_Adapter (val categoryList: List<CategoryModel>): RecyclerView.Adapter<Category_Adapter.ViewHolder>() {
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val title : TextView = itemView.findViewById(R.id.title_card)
@@ -56,7 +56,7 @@ class Category_Adapter (val categoryList: List<Category_Data>): RecyclerView.Ada
         }
     }
      interface OnItemClickListener{
-         fun onItemClick(pos:Int,category:Category_Data)
+         fun onItemClick(pos:Int,category:CategoryModel)
      }
     var onItemClickListener:OnItemClickListener?=null
 

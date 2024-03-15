@@ -9,7 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.session11_newsapp.R
 import com.example.session11_newsapp.user_interface.news.News_Fragment
-import com.example.session11_newsapp.user_interface.category.Category_Data
+import com.example.session11_newsapp.user_interface.category.CategoryModel
 import com.example.session11_newsapp.user_interface.category.Category_Fragment
 import com.example.session11_newsapp.user_interface.settings.Settings_Fragment
 
@@ -53,7 +53,7 @@ class Home_Activity : AppCompatActivity(){
 
 
         categoryFragment.onCategoryClickListener = object : Category_Fragment.OnCategoryClickListener{
-            override fun onCategoryClick(pos: Int, category: Category_Data) {
+            override fun onCategoryClick(pos: Int, category: CategoryModel) {
                 pushFragment(News_Fragment(category),true)
             }
         }

@@ -13,12 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.session11_newsapp.api.Model.SourcesItem
 import com.example.session11_newsapp.R
 import com.example.session11_newsapp.databinding.FragmentNewsBinding
-import com.example.session11_newsapp.user_interface.category.Category_Data
+import com.example.session11_newsapp.user_interface.category.CategoryModel
 import com.google.android.material.tabs.TabLayout
 
 //view
 //observe
-class News_Fragment(val category:Category_Data) : Fragment() {
+class News_Fragment(val category:CategoryModel) : Fragment() {
 
     lateinit var dataBinding:FragmentNewsBinding
     val adapterNews = News_Adapter(null)

@@ -9,7 +9,7 @@ import com.example.session11_newsapp.api.Model.NewsResponse
 import com.example.session11_newsapp.api.Model.SourceResponse
 import com.example.session11_newsapp.api.Model.SourcesItem
 import com.example.session11_newsapp.Constants
-import com.example.session11_newsapp.user_interface.category.Category_Data
+import com.example.session11_newsapp.user_interface.category.CategoryModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,7 +24,7 @@ class NewsVM :ViewModel(){
     //control progress bar
     val progressBar_Visable = MutableLiveData<Boolean>()
 
-     fun getSources(category: Category_Data) {
+     fun getSources(category: CategoryModel) {
          progressBar_Visable.value = true
 
         API_Manager.getAPI().getSources(Constants.ApiKey,category.id)
