@@ -1,5 +1,6 @@
 package com.example.session11_newsapp.user_interface
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -61,6 +62,7 @@ class Home_Activity : AppCompatActivity(){
     }
 
 
+    @SuppressLint("SuspiciousIndentation")
     fun pushFragment(fragment: Fragment, addtoBackStack:Boolean=false){
         val push = supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container,fragment)
@@ -68,6 +70,7 @@ class Home_Activity : AppCompatActivity(){
                 push.addToBackStack("name")
             }
             push.commit()
+
         drawerLayout.close()
     }
 }
