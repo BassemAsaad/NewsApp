@@ -20,7 +20,7 @@ import com.google.android.material.tabs.TabLayout
 //observe
 class News_Fragment(val category:CategoryModel) : Fragment() {
 
-    lateinit var dataBinding:FragmentNewsBinding
+    lateinit var newsDataBinding:FragmentNewsBinding
     val adapterNews = News_Adapter(null)
 
     lateinit var viewModel : NewsVM
@@ -31,8 +31,8 @@ class News_Fragment(val category:CategoryModel) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 //        return inflater.inflate(R.layout.fragment_news  ,container,false)
-        dataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_news,container,false)
-        return dataBinding.root
+        newsDataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_news,container,false)
+        return newsDataBinding.root
     }
 
 
@@ -68,25 +68,25 @@ class News_Fragment(val category:CategoryModel) : Fragment() {
         )//end
 
         viewModel.progressBar_Visable.observe(viewLifecycleOwner,Observer{
-            dataBinding.progressBar.isVisible = it
+            newsDataBinding.progressBar.isVisible = it
 
         })
     }
 
     fun init(){
 
-        dataBinding.recyclerView.adapter= adapterNews
+        newsDataBinding.recyclerView.adapter= adapterNews
 
     }
 
 
     private fun addSourcesToTabLayout(sources: List<SourcesItem?>?) {
         sources?.forEach {source->
-            val tab = dataBinding.tapLayout.newTab()
+            val tab = newsDataBinding.tapLayout.newTab()
             tab.setText(source?.name)
             tab.tag = source
-            dataBinding.tapLayout.addTab(tab)
-            dataBinding.tapLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            newsDataBinding.tapLayout.addTab(tab)
+            newsDataBinding.tapLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
 
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     val sourceName = tab?.tag as SourcesItem
@@ -104,7 +104,7 @@ class News_Fragment(val category:CategoryModel) : Fragment() {
             }//end of object
             )//end of addOnTabSelectedListener
         }//foreach
-        dataBinding.tapLayout.getTabAt(0)?.select()
+        newsDataBinding.tapLayout.getTabAt(0)?.select()
     }
 
 
