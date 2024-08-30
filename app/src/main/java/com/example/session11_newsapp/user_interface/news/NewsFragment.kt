@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.session11_newsapp.api.Model.SourcesItem
 import com.example.session11_newsapp.R
@@ -18,10 +17,10 @@ import com.google.android.material.tabs.TabLayout
 
 //view
 //observe
-class News_Fragment(val category:CategoryModel) : Fragment() {
+class NewsFragment(val category:CategoryModel) : Fragment() {
 
-    lateinit var newsDataBinding:FragmentNewsBinding
-    val adapterNews = News_Adapter(null)
+    private lateinit var newsDataBinding:FragmentNewsBinding
+    private val adapterNews = NewsAdapter(null)
 
     lateinit var viewModel : NewsVM
 
@@ -29,7 +28,7 @@ class News_Fragment(val category:CategoryModel) : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 //        return inflater.inflate(R.layout.fragment_news  ,container,false)
         newsDataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_news,container,false)
         return newsDataBinding.root
@@ -39,7 +38,7 @@ class News_Fragment(val category:CategoryModel) : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(NewsVM::class.java)
+        viewModel = ViewModelProvider(this)[NewsVM::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,29 +50,31 @@ class News_Fragment(val category:CategoryModel) : Fragment() {
     }
 
     private fun subscribeToLiveData() {
-        viewModel.sourceLiveData.observe(viewLifecycleOwner, Observer{
+        viewModel.sourceLiveData.observe(viewLifecycleOwner
+        ) {
             //do anything to ui
 
             // add response to tab layout
             addSourcesToTabLayout(it)
         }//end observer
-        )//end
+        //end
 
-        viewModel.newsLiveData.observe(viewLifecycleOwner,Observer{
+        viewModel.newsLiveData.observe(viewLifecycleOwner
+        ) {
             //do anything to ui
 
             //put news in recycler view
             adapterNews.changeItem(it)
         }//end observer
-        )//end
+        //end
 
-        viewModel.progressBar_Visable.observe(viewLifecycleOwner,Observer{
+        viewModel.progressBarVisible.observe(viewLifecycleOwner) {
             newsDataBinding.progressBar.isVisible = it
 
-        })
+        }
     }
 
-    fun init(){
+    private fun init(){
 
         newsDataBinding.recyclerView.adapter= adapterNews
 
@@ -90,12 +91,12 @@ class News_Fragment(val category:CategoryModel) : Fragment() {
 
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     val sourceName = tab?.tag as SourcesItem
-                    viewModel.getNews_BySources(sourceName)
+                    viewModel.getNewsBySources(sourceName)
                 }
 
                 override fun onTabReselected(tab: TabLayout.Tab?) {
                     val sourceName = tab?.tag as SourcesItem
-                    viewModel.getNews_BySources(sourceName)
+                    viewModel.getNewsBySources(sourceName)
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {

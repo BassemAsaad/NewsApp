@@ -3,12 +3,12 @@ package com.example.session11_newsapp.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class API_Manager {
+class APIManager {
 
     //to make it static
     companion object{
         private var retrofit : Retrofit?=null
-        fun getInstance():Retrofit {
+        private fun getInstance():Retrofit {
 
             if (retrofit==null){
                 retrofit = Retrofit.Builder()

@@ -4,5 +4,5 @@ data class CategoryModel(
     val id:String,
     val title:String,
     val imageResourceID:Int,
-    val bg_color:Int
+    val backgroundColor:Int
 )

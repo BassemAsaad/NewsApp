@@ -3,7 +3,7 @@ package com.example.session11_newsapp.user_interface.news
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.session11_newsapp.api.API_Manager
+import com.example.session11_newsapp.api.APIManager
 import com.example.session11_newsapp.api.Model.ArticlesItem
 import com.example.session11_newsapp.api.Model.NewsResponse
 import com.example.session11_newsapp.api.Model.SourceResponse
@@ -22,24 +22,24 @@ class NewsVM :ViewModel(){
     //create variable of articles type
     val newsLiveData = MutableLiveData<List<ArticlesItem?>?>()
     //control progress bar
-    val progressBar_Visable = MutableLiveData<Boolean>()
+    val progressBarVisible = MutableLiveData<Boolean>()
 
      fun getSources(category: CategoryModel) {
-         progressBar_Visable.value = true
+         progressBarVisible.value = true
 
-        API_Manager.getAPI().getSources(Constants.ApiKey,category.id)
+        APIManager.getAPI().getSources(Constants.API_KEY,category.id)
             .enqueue(object : Callback<SourceResponse> {
                 //onFailure
                 override fun onFailure(call: Call<SourceResponse>, t: Throwable) {
-                    progressBar_Visable.value = false
+                    progressBarVisible.value = false
 
-                    Log.e("error",t.localizedMessage)
+                    Log.e("error",t.localizedMessage!!.toString())
                 }
                 //onResponse
                 override fun onResponse(call: Call<SourceResponse>,
                                         response: Response<SourceResponse>
                 ) {
-                    progressBar_Visable.value = false
+                    progressBarVisible.value = false
                     //add response variable to add it later to TabLayout
                     sourceLiveData.value= response.body()?.sources
                 }
@@ -48,21 +48,21 @@ class NewsVM :ViewModel(){
     }//function end
 
 
-     fun getNews_BySources(source: SourcesItem) {
-         progressBar_Visable.value = true
+     fun getNewsBySources(source: SourcesItem) {
+         progressBarVisible.value = true
 
-        API_Manager.getAPI().getNews(Constants.ApiKey,source.id?:"")
+        APIManager.getAPI().getNews(Constants.API_KEY,source.id?:"")
             .enqueue(object :Callback<NewsResponse>{
                 override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
-                    progressBar_Visable.value = false
-                    Log.e("error",t.localizedMessage)
+                    progressBarVisible.value = false
+                    Log.e("error",t.localizedMessage!!.toString())
                 }
 
                 override fun onResponse(
                     call: Call<NewsResponse>,
                     response: Response<NewsResponse>
                 ) {
-                    progressBar_Visable.value = false
+                    progressBarVisible.value = false
                     //show it on recyclerview
                     newsLiveData.value = response.body()?.articles
                 }

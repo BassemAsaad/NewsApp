@@ -8,53 +8,45 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.session11_newsapp.R
-import com.example.session11_newsapp.user_interface.news.News_Fragment
+import com.example.session11_newsapp.user_interface.news.NewsFragment
 import com.example.session11_newsapp.user_interface.category.CategoryModel
-import com.example.session11_newsapp.user_interface.category.Category_Fragment
-import com.example.session11_newsapp.user_interface.settings.Settings_Fragment
+import com.example.session11_newsapp.user_interface.category.CategoryFragment
 
-class Home_Activity : AppCompatActivity(){
-    private lateinit var ic_menu : ImageView
+class HomeActivity : AppCompatActivity(){
+    private lateinit var icMenu : ImageView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var category: TextView
-    private lateinit var settings: TextView
 
-    val categoryFragment = Category_Fragment()
+    private val categoryFragment = CategoryFragment()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        init_view()
+        initView()
     }
 
-    private fun init_view() {
+    private fun initView() {
         drawerLayout = findViewById(R.id.drawer_layout)
-        ic_menu = findViewById(R.id.menu)
+        icMenu = findViewById(R.id.menu)
         category = findViewById(R.id.category_tv)
-        settings = findViewById(R.id.settings_tv)
 
-        ic_menu.setOnClickListener{
+        icMenu.setOnClickListener{
             //open drawer
             drawerLayout.open()
 
         }
         category.setOnClickListener{
             //push fragment category
-            pushFragment(Category_Fragment())
-        }
-
-        settings.setOnClickListener{
-            //push fragment settings
-            pushFragment(Settings_Fragment())
+            pushFragment(categoryFragment)
         }
 
         pushFragment(categoryFragment)
 
 
-        categoryFragment.onCategoryClickListener = object : Category_Fragment.OnCategoryClickListener{
+        categoryFragment.onCategoryClickListener = object : CategoryFragment.OnCategoryClickListener{
             override fun onCategoryClick(pos: Int, category: CategoryModel) {
-                pushFragment(News_Fragment(category),true)
+                pushFragment(NewsFragment(category),true)
             }
         }
 
@@ -63,10 +55,10 @@ class Home_Activity : AppCompatActivity(){
 
 
     @SuppressLint("SuspiciousIndentation")
-    fun pushFragment(fragment: Fragment, addtoBackStack:Boolean=false){
+    fun pushFragment(fragment: Fragment, addToBackStack:Boolean=false){
         val push = supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container,fragment)
-            if(addtoBackStack==true){
+            if(addToBackStack){
                 push.addToBackStack("name")
             }
             push.commit()

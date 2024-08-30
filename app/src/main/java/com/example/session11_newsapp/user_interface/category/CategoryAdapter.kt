@@ -10,7 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.session11_newsapp.R
 import com.google.android.material.card.MaterialCardView
 
-class Category_Adapter (val categoryList: List<CategoryModel>): RecyclerView.Adapter<Category_Adapter.ViewHolder>() {
+class CategoryAdapter (private val categoryList: List<CategoryModel>): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+
+    companion object{
+        const val RIGHT_SIDE = 1
+        const val LEFT_SIDE = 2
+    }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val title : TextView = itemView.findViewById(R.id.title_card)
@@ -21,19 +26,16 @@ class Category_Adapter (val categoryList: List<CategoryModel>): RecyclerView.Ada
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(
-                if (viewType == leftSide) R.layout.left_side_category
+                if (viewType == LEFT_SIDE) R.layout.left_side_category
                 else R.layout.right_side_category, parent, false
             )
         return ViewHolder(view)
     }
 
 
-    val leftSide = 10
-    val rightSide = 20
-
     override fun getItemViewType(position: Int): Int {
-        if (position%2==0) return leftSide
-        else return rightSide
+        return if (position%2==0) LEFT_SIDE
+        else RIGHT_SIDE
     }
 
     override fun getItemCount(): Int {
@@ -42,11 +44,11 @@ class Category_Adapter (val categoryList: List<CategoryModel>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = categoryList[position]
-        holder.title.setText(item.title)
+        holder.title.text = item.title
         holder.img.setImageResource(item.imageResourceID)
         holder.materialCard.
         setCardBackgroundColor(ContextCompat
-            .getColor(holder.itemView.context, item.bg_color)
+            .getColor(holder.itemView.context, item.backgroundColor)
         )
         onItemClickListener?.let {
             holder.itemView.setOnClickListener {

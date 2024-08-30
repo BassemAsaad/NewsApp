@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.session11_newsapp.api.Model.ArticlesItem
 import com.example.session11_newsapp.R
 
-class News_Adapter(var listItems: List<ArticlesItem?>?) : RecyclerView.Adapter<News_Adapter.ViewHolder>() {
+class NewsAdapter(var listItems: List<ArticlesItem?>?) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         val author:TextView=itemView.findViewById(R.id.author_item)
